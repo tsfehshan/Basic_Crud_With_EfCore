@@ -1,0 +1,4 @@
+wwwroot/
+Migrations/
+bin/
+obj/
