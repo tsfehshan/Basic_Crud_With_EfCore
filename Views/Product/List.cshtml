@@ -1,0 +1,25 @@
+﻿@using Basic_Crud_With_EFCore.Models;
+@model List<Product>
+<div class="table-container">
+    <table style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Created On</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (Product product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Type</td>
+                <td>@product.CreateTime</td>
+                <td> <button class="glyphicon-menu-left edit" data-id="@product.Id">Update</button></td>
+                <td><button class="glyphicon-menu-left delete" data-id="@product.Id">Delete</button></td>
+            </tr>
+        }
+    </table>
+</div>
