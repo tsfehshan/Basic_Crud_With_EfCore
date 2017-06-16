@@ -18,6 +18,8 @@ namespace Basic_Crud_With_EFCore.Controllers
         [HttpPost]
         public IActionResult Create()
         {
+            List<OrderProduct> OP = new List<OrderProduct> ();
+            OP.Add(new OrderProduct { Order = DBContext.Orders.Find((long)1)});
             Product product = new Product
             {
                 Name = "Test",
@@ -25,7 +27,8 @@ namespace Basic_Crud_With_EFCore.Controllers
                 Price = 10,
                 Type = "T",
                 CreateTime = DateTime.Now,
-                UpdateTime = DateTime.Now
+                UpdateTime = DateTime.Now,
+                Orders = OP
             };
 
             DBContext.Products.Add(product);

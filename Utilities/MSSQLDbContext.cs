@@ -14,9 +14,18 @@ namespace Basic_Crud_With_EFCore.Utilities
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().ToTable("Product");
+
+            modelBuilder.Entity<OrderProduct>()
+                .HasOne(bc => bc.Product)
+                .WithMany(b => b.Orders);
+
+            modelBuilder.Entity<OrderProduct>()
+                .HasOne(bc => bc.Order)
+                .WithMany(c => c.Products);
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Variation> Variations { get; set; }
     }
 }
